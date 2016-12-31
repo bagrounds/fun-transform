@@ -1,6 +1,6 @@
 # [fun-transform](https://bagrounds.gitlab.io/fun-transform)
 
-Fork me!
+Transform functions
 
 [![build-status](https://gitlab.com/bagrounds/fun-transform/badges/master/build.svg)](https://gitlab.com/bagrounds/fun-transform/commits/master)
 [![coverage-report](https://gitlab.com/bagrounds/fun-transform/badges/master/coverage.svg)](https://gitlab.com/bagrounds/fun-transform/commits/master)
