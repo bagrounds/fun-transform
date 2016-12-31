@@ -40,6 +40,9 @@
 
   /**
    *
+   * @function funTransform
+   * @alias fun-transform
+   *
    * @param {Object} options all input parameters
    * @param {Function} [options.input] applied to input
    * @param {Function} [options.direct] applied directly to function
@@ -60,6 +63,8 @@
   }
 
   /**
+   *
+   * @method toAsync
    *
    * @param {Boolean} handleErrors if true, catch errors and return in callback
    * @return {Function} an asynchronous version of sync
@@ -92,6 +97,8 @@
 
   /**
    *
+   * @method toMethod
+   *
    * @param {String} methodName the method name to choose
    * @return {Function} original[methodName]
    */
@@ -104,6 +111,8 @@
   }
 
   /**
+   *
+   * @method argsToObject
    *
    * @param {Array} keys to use for each input argument
    * @return {Function} that takes a single options object using provided keys
