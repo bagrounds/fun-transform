@@ -1,7 +1,7 @@
 {
   "name": "fun-transform",
   "version": "0.1.2",
-  "description": "Fork me!",
+  "description": "Transform functions",
   "main": "src/index.js",
   "scripts": {
     "pretest": "npm run lint",
