@@ -150,8 +150,23 @@
       }),
       result: funAssert.equal(12),
       sync: true
+    },
+    {
+      transformer: testResult({
+        input: 'constant value',
+        subject: constantFunction,
+        method: 'toResult'
+      }),
+      result: funAssert.equal('constant value'),
+      sync: true
     }
   ].map(funTest)
+
+  function constantFunction (returnValue) {
+    return function () {
+      return returnValue
+    }
+  }
 
   function throwOrOne (shouldThrow) {
     if (shouldThrow) {
