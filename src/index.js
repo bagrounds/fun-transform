@@ -61,7 +61,7 @@
         )
       }
 
-      transformed.toString = function toString () {
+      transformer.toString = function toString () {
         var functions = []
 
         if (options.output !== defaultOptions.output) {
