@@ -9,6 +9,7 @@
   var defaults = require('lodash.defaults')
   var specifier = require('specifier')
   var funAssert = require('fun-assert')
+  var stringify = require('stringify-anything')
 
   /* exports */
   module.exports = funTransform
@@ -19,9 +20,9 @@
   var isFunction = funAssert.type('Function')
 
   var defaultOptions = {
-    input: defaultInputTransformer,
-    direct: identity,
-    output: identity
+    input: defaultInputTransformer(),
+    direct: identity(),
+    output: identity()
   }
 
   var optionsSpec = {
@@ -53,12 +54,35 @@
     options = optionsChecker(defaults(options, defaultOptions))
 
     return function transformer (subject) {
-      return function transformed () {
+      function transformed () {
+        console.log(transformed.toString())
         return options.output(
           options.direct(subject)
             .apply(null, options.input.apply(null, arguments))
         )
       }
+
+      transformed.toString = function toString () {
+        var functions = []
+
+        if (options.output !== defaultOptions.output) {
+          functions.push(stringify(options.output))
+        }
+
+        if (options.direct !== defaultOptions.direct) {
+          functions.push(stringify(options.direct))
+        }
+
+        functions.push('original')
+
+        if (options.input !== defaultOptions.input) {
+          functions.push(stringify(options.input))
+        }
+
+        return stringifyFunctions(functions)
+      }
+
+      return transformed
     }
   }
 
@@ -128,11 +152,37 @@
   }
 
   function defaultInputTransformer () {
-    return arguments
+    function inputId () {
+      return arguments
+    }
+
+    inputId.toString = function toString () {
+      return 'id'
+    }
+
+    return inputId
   }
 
-  function identity (anything) {
-    return anything
+  function identity () {
+    function id (anything) {
+      return anything
+    }
+
+    id.toString = function toString () {
+      return 'id'
+    }
+
+    return id
+  }
+
+  function stringifyFunctions (functions) {
+    var string = functions.pop()
+
+    while (functions.length) {
+      string = functions.pop() + '(' + string + ')'
+    }
+
+    return string
   }
 })()
 
