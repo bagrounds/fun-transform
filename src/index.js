@@ -55,7 +55,6 @@
 
     return function transformer (subject) {
       function transformed () {
-        console.log(transformed.toString())
         return options.output(
           options.direct(subject)
             .apply(null, options.input.apply(null, arguments))
