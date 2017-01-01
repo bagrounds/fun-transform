@@ -12,8 +12,8 @@
     },
     {
       input: {
-        input: inputTransformer,
-        output: outputTransformer
+        input: objectToArgs,
+        output: objectWrap
       },
       result: funAssert.type('Function'),
       sync: true
@@ -25,7 +25,7 @@
       },
       transformer: testResult({
         input: {
-          input: inputTransformer
+          input: objectToArgs
         },
         subject: testFunction
       }),
@@ -39,8 +39,8 @@
       },
       transformer: testResult({
         input: {
-          input: inputTransformer,
-          output: outputTransformer
+          input: objectToArgs,
+          output: objectWrap
         },
         subject: testFunction
       }),
@@ -53,7 +53,7 @@
       input: 5,
       transformer: testResult({
         input: {
-          output: outputTransformer
+          output: objectWrap
         },
         subject: testFunction
       }),
@@ -185,11 +185,11 @@
     }
   }
 
-  function inputTransformer (options) {
+  function objectToArgs (options) {
     return [options.a, options.b]
   }
 
-  function outputTransformer (result) {
+  function objectWrap (result) {
     return {
       result: result
     }

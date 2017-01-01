@@ -95,7 +95,7 @@
    */
   function toAsync (handleErrors) {
     return funTransform({
-      direct: function (sync) {
+      direct: function toAsync (sync) {
         return function () {
           var inputs = Array.prototype.slice.call(arguments)
           var callback = inputs.pop()
@@ -127,10 +127,16 @@
    * @return {Function} original[methodName]
    */
   function toMethod (methodName) {
+    function toMethod (aFunction) {
+      return aFunction[methodName]
+    }
+
+    toMethod.toString = function toString () {
+      return '.' + methodName
+    }
+
     return funTransform({
-      direct: function (aFunction) {
-        return aFunction[methodName]
-      }
+      direct: toMethod
     })
   }
 
@@ -143,7 +149,7 @@
    */
   function argsToObject (keys) {
     return funTransform({
-      input: function (options) {
+      input: function argsToObject (options) {
         return keys.map(function (key) {
           return options[key]
         })
