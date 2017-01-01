@@ -39,6 +39,7 @@
   "dependencies": {
     "fun-assert": "^0.5.0",
     "lodash.defaults": "^4.2.0",
-    "specifier": "^0.8.1"
+    "specifier": "^0.8.1",
+    "stringify-anything": "^0.2.0"
   }
 }
