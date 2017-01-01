@@ -151,7 +151,7 @@
       result: funAssert.equal(12),
       sync: true
     }
-  ].map(test)
+  ].map(funTest)
 
   function throwOrOne (shouldThrow) {
     if (shouldThrow) {
@@ -193,36 +193,6 @@
     return {
       result: result
     }
-  }
-
-  function test (options) {
-    var description = descriptionString(options)
-    var test = funTest(options)
-
-    test.description = description
-
-    return test
-  }
-
-  function descriptionString (options) {
-    if (options.input === undefined) {
-      options.input = {}
-    }
-
-    var assertee = options.result ? 'result' : 'error'
-
-    var assertion = options.error || options.result || funAssert.falsey
-
-    var description = assertee + ': ' + assertion.toString(options.input)
-    var subject = options.transformer
-      ? options.transformer.name
-      : 'funTransform'
-
-    var inputString = JSON.stringify(options.input)
-
-    description = subject + '(' + inputString + ')' + ' - ' + description
-
-    return description
   }
 })()
 

@@ -29,8 +29,8 @@
   "homepage": "https://gitlab.com/bagrounds/fun-transform#README",
   "devDependencies": {
     "eslint": "^3.12.2",
-    "fun-test": "^0.9.1",
-    "fun-test-runner": "^0.3.0",
+    "fun-test": "^0.10.0",
+    "fun-test-runner": "^0.4.1",
     "jsdoc": "^3.4.3",
     "madge": "^1.4.3",
     "showdown": "^1.5.4",
