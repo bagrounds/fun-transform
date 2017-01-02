@@ -36,7 +36,9 @@
         )
       }
 
-      transformer.toString = function toString () {
+      transformer.toString = function toString (subject) {
+        var subjectString = subject ? stringify(subject) : 'subject'
+
         var functions = []
 
         if (options.output !== defaultOptions.output) {
@@ -47,7 +49,7 @@
           functions.push(stringify(options.direct))
         }
 
-        functions.push('original')
+        functions.push(subjectString)
 
         if (options.input !== defaultOptions.input) {
           functions.push(stringify(options.input))
