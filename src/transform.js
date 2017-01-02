@@ -28,38 +28,38 @@
   function transform (options) {
     options = optionsChecker(defaults(options, defaultOptions))
 
-    return function transformer (subject) {
-      function transformed () {
+    function transformer (subject) {
+      return function transformed () {
         return options.output(
           options.direct(subject)
             .apply(null, options.input.apply(null, arguments))
         )
       }
+    }
 
-      transformer.toString = function toString (subject) {
-        var subjectString = subject ? stringify(subject) : 'subject'
+    transformer.toString = function toString (subject) {
+      var subjectString = subject ? stringify(subject) : 'subject'
 
-        var functions = []
+      var functions = []
 
-        if (options.output !== defaultOptions.output) {
-          functions.push(stringify(options.output))
-        }
-
-        if (options.direct !== defaultOptions.direct) {
-          functions.push(stringify(options.direct))
-        }
-
-        functions.push(subjectString)
-
-        if (options.input !== defaultOptions.input) {
-          functions.push(stringify(options.input))
-        }
-
-        return stringifyFunctions(functions)
+      if (options.output !== defaultOptions.output) {
+        functions.push(stringify(options.output))
       }
 
-      return transformed
+      if (options.direct !== defaultOptions.direct) {
+        functions.push(stringify(options.direct))
+      }
+
+      functions.push(subjectString)
+
+      if (options.input !== defaultOptions.input) {
+        functions.push(stringify(options.input))
+      }
+
+      return stringifyFunctions(functions)
     }
+
+    return transformer
   }
 
   function defaultInputTransformer () {
