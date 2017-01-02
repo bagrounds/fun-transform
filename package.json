@@ -29,15 +29,15 @@
   "homepage": "https://gitlab.com/bagrounds/fun-transform#README",
   "devDependencies": {
     "eslint": "^3.12.2",
-    "fun-test": "^0.10.0",
-    "fun-test-runner": "^0.4.1",
+    "fun-test": "latest",
+    "fun-test-runner": "latest",
     "jsdoc": "^3.4.3",
     "madge": "^1.4.3",
     "showdown": "^1.5.4",
     "tap": "^8.0.1"
   },
   "dependencies": {
-    "fun-assert": "^0.5.0",
+    "fun-assert": "latest",
     "lodash.defaults": "^4.2.0",
     "specifier": "^0.8.1",
     "stringify-anything": "^0.2.0"
